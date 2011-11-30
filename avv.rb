@@ -12,12 +12,12 @@ departure = "am hügel"
 def help
   f = File.basename $0
   puts <<-EOF
-usage: 
+usage:
   #{f} [from-city] from-stop [to-city] to-stop
   #{f} from-stop
-  
+
   When no city is specified, Aachen is assumed.
-  
+
 Options:
   -t | --time\tJourney start time
   EOF
@@ -110,9 +110,13 @@ end
 
 case ARGV.size
 when 1 then
-    departure_list('aachen', ARGV[0], start_at)
+  departure_list('aachen', ARGV[0], start_at)
 when 2 then
-    from_to_list(ARGV[0], 'aachen', ARGV[1], 'aachen', start_at)
+  from_to_list(ARGV[0], 'aachen', ARGV[1], 'aachen', start_at)
+when 3 then
+  from_to_list(ARGV[1], ARGV[0], ARGV[2], 'aachen', start_at)
+when 4 then
+  from_to_list(ARGV[1], ARGV[0], ARGV[3], ARGV[2], start_at)
 else
   puts "Keine Ahnung, was zu tun ist."
 end
