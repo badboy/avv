@@ -10,6 +10,17 @@ Find a connection from point A to point B:
 
 When no city is specified, Aachen is assumed (as I live there now).
 
+Example output:
+
+    $ avv Aachen "Am Hügel" "Königstraße"
+    Von Aachen Am Hügel nach Aachen Königstraße
+    -------------------------------------------
+    Linie	ab	Um.	an
+    -----------------------------
+    23	20:46	0	20:49
+    23	21:16	0	21:19
+    23	21:46	0	21:49
+
 Show departures from a given stop in Aachen:
 
     avv from-stop
@@ -17,6 +28,15 @@ Show departures from a given stop in Aachen:
 Do not want to start immediately? Just pass a time:
 
     avv from-stop -t 14:00
+
+Example output:
+
+    $ avv "Am Hügel" -t 8:00
+    Abfahrt Aachen, Am Hügel
+    ------------------------
+    08:08	22	Stolberg (Rheinland), Mühlener Bahnhof (Bus)
+    08:13	12	Aachen, Campus Melaten
+    08:23	12	Stolberg (Rheinland), Münsterbusch Buschmühle Friedhof
 
 ## Install
 
