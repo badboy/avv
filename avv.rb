@@ -45,7 +45,7 @@ def departure_list(city, departure, start_at)
       end
       res = []
       row.search('td').each do |col|
-        res << col.text
+        res << col.text.chomp.strip
       end
       puts res*"\t"
     end
@@ -73,8 +73,8 @@ def from_to_list(departure, start_city, target, target_city=nil, start_at=nil)
     results = result_page.search('table.verbindungsuebersicht tr')
     results.each do |row|
       if row.text =~ /Linie\(n\)/
-        puts "Linie\tab\tUm.\tan"
-        puts "-----------------------------"
+        puts "Linie(n)\t\tab\tUmst.\tan"
+        puts "---------------------------------------------"
         next
       end
       res = []
@@ -85,7 +85,7 @@ def from_to_list(departure, start_city, target, target_city=nil, start_at=nil)
         next if t =~ /Details/
         res << t
       end
-      puts res*"\t"
+      puts "%-20s\t%s\t%s\t%s\n" %res
     end
   end
 end
